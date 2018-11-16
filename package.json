@@ -24,10 +24,12 @@
   },
   "homepage": "https://github.com/signalive/yaver",
   "dependencies": {
-    "event-emitter-extra": "0.1.8",
-    "lodash": "4.17.11",
-    "react": "16.7.0-alpha.2",
-    "react-dom": "16.7.0-alpha.2"
+    "event-emitter-extra": "^0.1.8",
+    "lodash": "^4.0.0"
+  },
+  "peerDependencies": {
+    "react": "^16.7.0-alpha.2",
+    "react-dom": "^16.7.0-alpha.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.0.0-beta.51",
