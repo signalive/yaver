@@ -21,6 +21,10 @@ const config = {
   mode: mode,
   entry: __dirname + '/src/index.js',
   devtool: 'source-map',
+  externals: {
+    'react': 'react',
+    'react-dom' : 'reactDOM'
+  },
   output: {
     path: __dirname + '/lib',
     filename: outputFile,
