@@ -5,16 +5,16 @@ import {useState, useEffect} from 'react';
 import EventEmitterExtra from 'event-emitter-extra';
 
 class Stores extends EventEmitterExtra {
-  state = {};
+  storeBank = {};
 
   get(name) {
-    return this.state[name];
+    return this.storeBank[name];
   }
 
   update(name, nextState) {
-    if (!this.get(name)) this.state[name] = {};
+    if (!this.get(name)) this.storeBank[name] = {};
     if (isEqual(this.get(name), nextState)) return;
-    assign(this.state[name], nextState);
+    assign(this.storeBank[name], nextState);
     this.emit(`update_${name}`, this.get(name));
   }
 }
