@@ -1,6 +1,6 @@
 import isEqual from 'lodash/isEqual';
 import isUndefined from 'lodash/isUndefined';
-import merge from 'lodash/merge';
+import assign from 'lodash/assign';
 import {useState, useEffect} from 'react';
 import EventEmitterExtra from 'event-emitter-extra';
 
@@ -13,7 +13,7 @@ class Stores extends EventEmitterExtra {
 
   update(name, nextState) {
     if (isEqual(this.get(name), nextState)) return;
-    merge(this.state, {[name]: nextState});
+    assign(this.state[name], nextState);
     this.emit(`update_${name}`, this.state);
   }
 }
