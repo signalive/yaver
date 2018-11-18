@@ -15,7 +15,7 @@ class Stores extends EventEmitterExtra {
     if (!this.get(name)) this.state[name] = {};
     if (isEqual(this.get(name), nextState)) return;
     assign(this.state[name], nextState);
-    this.emit(`update_${name}`, this.state);
+    this.emit(`update_${name}`, this.get(name));
   }
 }
 
