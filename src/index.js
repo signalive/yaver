@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import clone from 'lodash/clone';
 import get from 'lodash/get';
 import isUndefined from 'lodash/isUndefined';
 import isFunction from 'lodash/isFunction';
@@ -6,8 +6,6 @@ import assign from 'lodash/assign';
 import {useState, useEffect} from 'react';
 import EventEmitterExtra from 'event-emitter-extra';
 import {isEquivalent} from './utils';
-
-_.templateSettings.interpolate = /{{([\s\S]+?)}}/g;
 
 EventEmitterExtra.defaultMaxListeners = Infinity;
 
@@ -30,7 +28,7 @@ class Stores extends EventEmitterExtra {
       store = this.get(name);
     }
 
-    const oldStore = _.clone(store);
+    const oldStore = clone(store);
 
     assign(store, nextStore);
 
@@ -109,9 +107,7 @@ export function useStore(to, condition) {
 export function whenChanged(fields = []) {
   return (oldStore, newStore) => {
     return fields.some(field => {
-      const compiledField = _.template(field)(newStore);
-
-      return !isEquivalent(get(newStore, compiledField), get(oldStore, compiledField));
+      return !isEquivalent(get(newStore, field), get(oldStore, field));
     });
   };
 };
