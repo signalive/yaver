@@ -1,6 +1,6 @@
 {
   "name": "yaver",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Simple yet powerfull inter-component state sharing library for React",
   "main": "lib/yaver.js",
   "scripts": {
